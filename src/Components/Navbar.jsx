@@ -1,13 +1,14 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { AppContext } from "../../Firebase/AuthProvider";
-
+import { AppContext } from "../Firebase/AuthProvider";
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const Navbar = () => {
 
     const { user, signOutUser } = useContext(AppContext)
 
-
+    console.log(user)
 
     const navLinks = <>
         <NavLink to="/"><li>Home</li></NavLink>
@@ -16,10 +17,7 @@ const Navbar = () => {
     </>
 
     const handleLogOut = () => {
-
         signOutUser()
-
-
     }
 
     return (
@@ -45,14 +43,29 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user?.email ? <Link onClick={handleLogOut}><button className="btn">LogOut</button></Link>
+                    user?.email ? <>
+                        <div className="flex items-center justify-center gap-3">
+                            <img data-tooltip-id="my-tooltip" data-tooltip-content={user.displayName} className="rounded-full w-[40px] h-[40px]" src={user?.photoURL} alt="" />
+
+
+                            <div className="dropdown">
+                                <div tabIndex={0} role="button" className="btn m-1">My Profile</div>
+                                <ul tabIndex={0} className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-box w-60 space-y-1 font-medium">
+                                    <Link><button className="hover:bg-gray-200 p-2 rounded-md">Add Volunteer Post</button></Link>
+                                    <Link><button className="hover:bg-gray-200 p-2 rounded-md">Manage My Post</button></Link>
+                                    <Link><button className="hover:bg-gray-200 p-2 rounded-md">My Volunteer Requested Post</button></Link>
+                                    <Link onClick={handleLogOut}><button className="btn btn-block">LogOut</button></Link>
+                                </ul>
+                            </div>
+                        </div>
+                    </>
                         :
                         <Link to="/login"><button className="btn">Login</button></Link>
                 }
 
 
             </div>
-
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };

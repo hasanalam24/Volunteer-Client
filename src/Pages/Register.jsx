@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../Firebase/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 
-    const { signUpUser } = useContext(AppContext)
+    const { signUpUser, updateUser, signOutUser } = useContext(AppContext)
     const [errorText, setErrorText] = useState()
-
+    const navigate = useNavigate()
 
     const handleRegister = e => {
         e.preventDefault()
@@ -37,7 +37,13 @@ const Register = () => {
         signUpUser(email, password)
             .then(result => {
                 console.log('register user', result.user)
-                alert('register done')
+
+                updateUser(name, photo)
+                    .then(() => {
+
+                        signOutUser()
+                        navigate('/login')
+                    })
 
             })
             .catch(error => {

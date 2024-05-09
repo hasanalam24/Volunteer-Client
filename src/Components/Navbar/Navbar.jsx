@@ -1,12 +1,29 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AppContext } from "../../Firebase/AuthProvider";
+import { toast } from "react-toastify";
+
 
 
 const Navbar = () => {
+
+    const { user, signOutUser } = useContext(AppContext)
+
+
+
     const navLinks = <>
         <NavLink to="/"><li>Home</li></NavLink>
         <NavLink to="/needVolunteer"><li>Need Volunteer</li></NavLink>
         <NavLink to="/register"><li>Register</li></NavLink>
     </>
+
+    const handleLogOut = () => {
+        toast('LogOut Done')
+        signOutUser()
+
+
+    }
+
     return (
         <div className="navbar bg-base-100 flex items-center justify-center">
             <div className="navbar-start">
@@ -29,7 +46,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login"><button className="btn">Login</button></Link>
+                {
+                    user?.email ? <Link onClick={handleLogOut}><button className="btn">LogOut</button></Link>
+                        :
+                        <Link to="/login"><button className="btn">Login</button></Link>
+                }
+
+
             </div>
         </div>
     );

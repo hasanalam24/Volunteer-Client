@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../Firebase/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom";
 
 const Register = () => {
 
@@ -13,8 +14,8 @@ const Register = () => {
         const email = form.email.value
         const password = form.password.value
 
-        const user = { email, password }
-        console.log(user)
+        const userInfo = { email, password }
+        console.log(userInfo)
         signUpUser(email, password)
             .then(result => {
                 console.log('register user', result.user)
@@ -46,14 +47,15 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name="password" type="password" placeholder="password" className="input input-bordered" required />
-                            <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                            </label>
+
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                </div>
+                <div>
+                    <p>Already have an account? Please <Link to="/login" className="text-green-500 font-medium">Login</Link> here</p>
                 </div>
                 <ToastContainer />
             </div>

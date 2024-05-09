@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
 import { AppContext } from "../Firebase/AuthProvider";
+
 
 
 const Login = () => {
 
-    const { signInUser } = useContext(AppContext)
+    const { signInUser, googleLogin } = useContext(AppContext)
 
     const handleLogin = e => {
         e.preventDefault()
@@ -19,12 +19,25 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 if (result.user) {
-                    toast("Login Succesfully");
+                    alert("Login Succesfully");
                 }
             })
             .catch(error => {
                 console.log(error.message)
             })
+    }
+
+    const handleGoogle = () => {
+        googleLogin()
+            .then(result => {
+                if (result.user) {
+                    alert("google Login done");
+                }
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+
     }
 
     return (
@@ -55,12 +68,14 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
+                    <button onClick={handleGoogle} className="btn">Google</button>
                 </div>
                 <div>
                     <p>New User? Please <Link to="/register" className="text-green-500 font-medium">Register</Link> here</p>
                 </div>
-                <ToastContainer />
+
             </div>
+
         </div>
     );
 };

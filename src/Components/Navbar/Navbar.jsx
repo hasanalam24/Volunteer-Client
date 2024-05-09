@@ -1,8 +1,6 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AppContext } from "../../Firebase/AuthProvider";
-import { toast } from "react-toastify";
-
 
 
 const Navbar = () => {
@@ -18,7 +16,7 @@ const Navbar = () => {
     </>
 
     const handleLogOut = () => {
-        toast('LogOut Done')
+
         signOutUser()
 
 
@@ -54,6 +52,7 @@ const Navbar = () => {
 
 
             </div>
+
         </div>
     );
 };

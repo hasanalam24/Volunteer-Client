@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import DetailsPage from "../Pages/DetailsPage";
 import BeAVolunteer from "../Components/BeAVolunteer";
 import MangeMyPost from "../Pages/MangeMyPost";
+import UpdatedPage from "../Pages/UpdatedPage";
 
 const router = createBrowserRouter([
     {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "needVolunteer",
-                element: <PrivateRoute><NeedVolunteer></NeedVolunteer></PrivateRoute>,
+                element: <NeedVolunteer></NeedVolunteer>,
                 loader: () => fetch('http://localhost:5000/addpost')
             },
             {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><AddVolunteer></AddVolunteer></PrivateRoute>
             },
             {
-                path: "berequest/:id",
+                path: "request/:id",
                 element: <PrivateRoute>
                     <BeAVolunteer></BeAVolunteer>
                 </PrivateRoute>,
@@ -57,6 +58,13 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <MangeMyPost></MangeMyPost>
                 </PrivateRoute>
+            },
+            {
+                path: "updated/:id",
+                element: <PrivateRoute>
+                    <UpdatedPage></UpdatedPage>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
             },
         ]
     },

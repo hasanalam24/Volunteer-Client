@@ -3,7 +3,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const DetailsPage = () => {
     const details = useLoaderData()
-    console.log(details)
+
 
     const { _id, postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage } = details
 
@@ -32,7 +32,7 @@ const DetailsPage = () => {
                                 <h4>Deadine: {deadline}</h4>
                             </div>
                         </div>
-                        <Link to={`/berequest/${_id}`}>
+                        <Link to={`/request/${_id}`}>
                             <button className="btn btn-block mt-2 btn-secondary">Be A Volunteer</button>
                         </Link>
 

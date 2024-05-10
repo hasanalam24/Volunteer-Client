@@ -8,7 +8,7 @@ const Navbar = () => {
 
     const { user, signOutUser } = useContext(AppContext)
 
-    console.log(user)
+
 
     const navLinks = <>
         <NavLink to="/"><li>Home</li></NavLink>

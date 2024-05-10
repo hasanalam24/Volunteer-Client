@@ -4,6 +4,8 @@ import { AppContext } from "../Firebase/AuthProvider";
 import { MdAutoDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const MangeMyPost = () => {
     const [posts, setposts] = useState([])
@@ -17,6 +19,7 @@ const MangeMyPost = () => {
 
             })
     }, [user])
+
 
 
     return (
@@ -49,7 +52,7 @@ const MangeMyPost = () => {
                                             <td>{post.category}</td>
                                             <td>{post.needPeoples}</td>
                                             <td className="flex gap-3 items-center">
-                                                <button><FaEdit className="text-green-600 text-lg"></FaEdit></button>
+                                                <Link to={`/updated/${post._id}`}><FaEdit className="text-green-600 text-lg"></FaEdit></Link>
                                                 <button> <MdAutoDelete className="text-red-600 text-lg"></MdAutoDelete> </button>
                                             </td>
                                         </tr>

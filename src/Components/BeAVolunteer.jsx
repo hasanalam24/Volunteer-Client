@@ -28,7 +28,7 @@ const BeAVolunteer = () => {
         const suggestion = form.suggestion.value
 
         const requestInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, requestImage, suggestion }
-        console.log(requestInfo)
+
 
         fetch('http://localhost:5000/request', {
             method: "POST",
@@ -41,7 +41,7 @@ const BeAVolunteer = () => {
             .then(data => {
                 if (data.insertedId) {
                     alert('request done')
-                    console.log(data)
+
                 }
             })
 

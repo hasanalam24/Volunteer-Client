@@ -53,7 +53,7 @@ const Navbar = () => {
                                 <ul tabIndex={0} className="dropdown-content z-[10] menu p-2 shadow bg-base-100 rounded-box w-60 space-y-1 font-medium">
                                     <Link to="/addVolunteer"><button className="hover:bg-gray-200 p-2 rounded-md">Add Volunteer Post</button></Link>
                                     <Link to={`/addposts/${user.email}`}><button className="hover:bg-gray-200 p-2 rounded-md">Manage My Post</button></Link>
-                                    <Link><button className="hover:bg-gray-200 p-2 rounded-md">My Volunteer Requested Post</button></Link>
+                                    <Link to={`/myrequest/${user.email}`}><button className="hover:bg-gray-200 p-2 rounded-md">My Volunteer Requested Post</button></Link>
                                     <Link onClick={handleLogOut}><button className="btn btn-block">LogOut</button></Link>
                                 </ul>
                             </div>

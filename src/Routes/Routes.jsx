@@ -11,6 +11,7 @@ import DetailsPage from "../Pages/DetailsPage";
 import BeAVolunteer from "../Components/BeAVolunteer";
 import MangeMyPost from "../Pages/MangeMyPost";
 import UpdatedPage from "../Pages/UpdatedPage";
+import MyRequestPage from "../Pages/MyRequestPage";
 
 const router = createBrowserRouter([
     {
@@ -65,6 +66,13 @@ const router = createBrowserRouter([
                     <UpdatedPage></UpdatedPage>
                 </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
+            },
+            {
+                path: "myrequest/:email",
+                element: <PrivateRoute>
+                    <MyRequestPage></MyRequestPage>
+                </PrivateRoute>,
+
             },
         ]
     },

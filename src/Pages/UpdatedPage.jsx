@@ -2,14 +2,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AppContext } from "../Firebase/AuthProvider";
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdatedPage = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AppContext)
     const datas = useLoaderData()
-
+    const navigate = useNavigate()
 
     const handleUpdated = e => {
         e.preventDefault()
@@ -48,13 +48,14 @@ const UpdatedPage = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+
                         if (data.modifiedCount > 0) {
                             Swal.fire({
                                 title: "Updated!",
                                 text: "Your Post has been Updated.",
                                 icon: "success"
                             });
+                            navigate('/')
                         }
                     })
 

@@ -4,12 +4,14 @@ import { AppContext } from "../Firebase/AuthProvider";
 import { MdAutoDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const MangeMyPost = () => {
     const [posts, setposts] = useState([])
     const { user } = useContext(AppContext)
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`http://localhost:5000/addposts/${user.email}`)
@@ -20,7 +22,38 @@ const MangeMyPost = () => {
             })
     }, [user])
 
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
 
+                fetch(`http://localhost:5000/delete/${id}`, {
+                    method: "DELETE",
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            navigate("/")
+                        }
+                    })
+
+
+            }
+        });
+    }
 
     return (
         <div>
@@ -53,7 +86,7 @@ const MangeMyPost = () => {
                                             <td>{post.needPeoples}</td>
                                             <td className="flex gap-3 items-center">
                                                 <Link to={`/updated/${post._id}`}><FaEdit className="text-green-600 text-lg"></FaEdit></Link>
-                                                <button> <MdAutoDelete className="text-red-600 text-lg"></MdAutoDelete> </button>
+                                                <button onClick={() => handleDelete(post._id)}> <MdAutoDelete className="text-red-600 text-lg"></MdAutoDelete> </button>
                                             </td>
                                         </tr>
                                         <br />

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../Firebase/AuthProvider";
 
 
@@ -7,6 +7,8 @@ import { AppContext } from "../Firebase/AuthProvider";
 const Login = () => {
 
     const { signInUser, googleLogin } = useContext(AppContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = e => {
         e.preventDefault()
@@ -19,7 +21,9 @@ const Login = () => {
         signInUser(email, password)
             .then(result => {
                 if (result.user) {
+
                     alert("Login Succesfully");
+                    navigate(location?.state || "/")
                 }
             })
             .catch(error => {
@@ -32,6 +36,7 @@ const Login = () => {
             .then(result => {
                 if (result.user) {
                     alert("google Login done");
+                    navigate(location?.state || "/")
                 }
             })
             .catch(error => {

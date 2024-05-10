@@ -9,6 +9,7 @@ import AddVolunteer from "../Pages/AddVolunteer";
 import PrivateRoute from "./PrivateRoute";
 import DetailsPage from "../Pages/DetailsPage";
 import BeAVolunteer from "../Components/BeAVolunteer";
+import MangeMyPost from "../Pages/MangeMyPost";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
                     <BeAVolunteer></BeAVolunteer>
                 </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
+            },
+            {
+                path: "addposts/:email",
+                element: <PrivateRoute>
+                    <MangeMyPost></MangeMyPost>
+                </PrivateRoute>
             },
         ]
     },

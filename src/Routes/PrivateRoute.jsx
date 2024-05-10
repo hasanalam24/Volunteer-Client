@@ -9,13 +9,14 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation()
 
 
+
     if (loading) {
         return <span className="loading loading-spinner text-secondary"></span>
     }
     if (user) {
         return children;
     }
-    console.log(location)
+
     return <Navigate to='/login' state={location?.pathname || '/'}></Navigate>
 
 };

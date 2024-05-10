@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,7 +19,24 @@ const AddVolunteer = () => {
         const username = form.username.value
         const email = form.email.value
 
-        console.log(postTile, thumbnail, description, needPeoples, location, category, deadline, username, email)
+        const postInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email }
+
+        fetch('http://localhost:5000/addpost', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(postInfo)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    alert('added done')
+                }
+            })
+
+
+
     }
     return (
         <div>

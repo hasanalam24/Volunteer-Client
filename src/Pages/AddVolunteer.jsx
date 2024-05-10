@@ -1,10 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { AppContext } from "../Firebase/AuthProvider";
 
 const AddVolunteer = () => {
     const [startDate, setStartDate] = useState(new Date());
+    const { user } = useContext(AppContext)
 
     const handleAddVolunteer = e => {
         e.preventDefault()
@@ -73,7 +75,7 @@ const AddVolunteer = () => {
                             <div className="col-span-full sm:col-span-3">
                                 <h1 className="text-md font-medium">Select Category</h1>
                                 <select className="p-2 rounded-md" name="category" id="">
-                                    <option disabled defaultValue="Choose">Choose</option>
+                                    <option disabled selected>Choose</option>
                                     <option value="Health Care">Health Care</option>
                                     <option value="Education">Education</option>
                                     <option value="Social Service">Social Service</option>
@@ -96,12 +98,12 @@ const AddVolunteer = () => {
                             <div className="col-span-full sm:col-span-3">
                                 <label htmlFor="username" className="text-md font-medium">Username</label>
                                 <input id="username" type="text" name="username"
-                                    placeholder="Username" className="w-full rounded-md p-2" />
+                                    placeholder="Username" value={user?.displayName} className="w-full rounded-md p-2" />
                             </div>
                             <div className="col-span-full sm:col-span-3">
                                 <label htmlFor="website" className="text-md font-medium">Email</label>
                                 <input id="email" type="email" name="email"
-                                    placeholder="Email" className="w-full rounded-md p-2" />
+                                    placeholder="Email" value={user?.email} className="w-full rounded-md p-2" />
                             </div>
 
 

@@ -6,6 +6,7 @@ import NeedVolunteer from "../Pages/NeedVolunteer";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import AddVolunteer from "../Pages/AddVolunteer";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -27,11 +28,12 @@ const router = createBrowserRouter([
             },
             {
                 path: "needVolunteer",
-                element: <NeedVolunteer></NeedVolunteer>
+                element: <PrivateRoute><NeedVolunteer></NeedVolunteer></PrivateRoute>,
+                loader: () => fetch('http://localhost:5000/addpost')
             },
             {
                 path: "addVolunteer",
-                element: <AddVolunteer></AddVolunteer>
+                element: <PrivateRoute><AddVolunteer></AddVolunteer></PrivateRoute>
             },
         ]
     },

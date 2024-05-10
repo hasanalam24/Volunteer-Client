@@ -1,14 +1,18 @@
-
-import { useContext, useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import { useContext } from "react";
 import { AppContext } from "../Firebase/AuthProvider";
+import { useLoaderData } from "react-router-dom";
 
-const AddVolunteer = () => {
-    const [startDate, setStartDate] = useState(new Date());
+
+
+const BeAVolunteer = () => {
+
     const { user } = useContext(AppContext)
+    const details = useLoaderData()
 
-    const handleAddVolunteer = e => {
+
+    const { postTile, thumbnail, description, needPeoples, location, category, deadline } = details
+
+    const handleRequest = e => {
         e.preventDefault()
         const form = e.target
         const postTile = form.postTile.value
@@ -17,36 +21,41 @@ const AddVolunteer = () => {
         const needPeoples = form.needPeoples.value
         const location = form.location.value
         const category = form.category.value
-        const deadline = startDate
+        const deadline = form.deadline.value
         const username = form.username.value
         const email = form.email.value
-        const owenerImage = user.photoURL
+        const requestImage = user.photoURL
+        const suggestion = form.suggestion.value
 
-        const postInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage }
+        const requestInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, requestImage, suggestion }
+        console.log(requestInfo)
 
-        fetch('http://localhost:5000/addpost', {
-            method: 'POST',
+        fetch('http://localhost:5000/request', {
+            method: "POST",
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(postInfo)
+            body: JSON.stringify(requestInfo)
         })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('added done')
+                    alert('request done')
+                    console.log(data)
                 }
             })
 
 
-
     }
+
+
+
     return (
         <div>
             <section className="p-6 bg-gray-200 dark:bg-gray-200 dark:text-gray-900">
-                <form onSubmit={handleAddVolunteer} noValidate="" action="" className="container flex flex-col mx-auto space-y-1">
+                <form onSubmit={handleRequest} noValidate="" action="" className="container flex flex-col mx-auto space-y-1">
                     <div className="pl-6">
-                        <p className="font-medium">Add Volunteer Post Information</p>
+                        <p className="font-medium">Request For Volunteer</p>
 
                     </div>
                     <fieldset className="grid grid-cols-4 gap-6 p-6 pt-2 rounded-md shadow-sm dark:bg-gray-50">
@@ -54,38 +63,32 @@ const AddVolunteer = () => {
                         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                             <div className="col-span-full sm:col-span-3">
                                 <label className="text-md font-medium">Post Title</label>
-                                <input id="postTitle" type="text" name="postTile" placeholder="Post Title" className="w-full rounded-md p-2" />
+                                <input id="postTitle" type="text" name="postTile" value={postTile} placeholder="Post Title" className="w-full rounded-md p-2" />
                             </div>
                             <div className="col-span-full sm:col-span-3">
                                 <label className="text-md font-medium">Thumbnail</label>
-                                <input id="thumbnail" type="text" name="thumbnail" placeholder="Thumbnail" className="w-full rounded-md p-2" />
+                                <input id="thumbnail" type="text" name="thumbnail" placeholder="Thumbnail" value={thumbnail} className="w-full rounded-md p-2" />
                             </div>
                             <div className="col-span-full">
                                 <label className="text-md font-medium">Description</label>
-                                <textarea id="description" name="description" placeholder="Description" className="w-full rounded-md p-2"></textarea>
+                                <textarea id="description" name="description" placeholder="Description" value={description} className="w-full rounded-md p-2"></textarea>
                             </div>
                             <div className="col-span-full sm:col-span-3">
                                 <label className="text-md font-medium">How Much Needed?</label>
-                                <input id="needVol" type="text" name="needPeoples" placeholder="Example: 10" className="w-full rounded-md p-2" />
+                                <input id="" type="text" value={needPeoples} name="needPeoples" placeholder="Example: 10" className="w-full rounded-md p-2" />
                             </div>
 
                             <div className="col-span-full sm:col-span-3">
                                 <label className="text-md font-medium">Location</label>
-                                <input id="location" type="text" name="location" placeholder="Location" className="w-full rounded-md p-2" />
+                                <input id="location" type="text" value={location} name="location" placeholder="Location" className="w-full rounded-md p-2" />
                             </div>
                             <div className="col-span-full sm:col-span-3">
-                                <h1 className="text-md font-medium">Select Category</h1>
-                                <select className="p-2 rounded-md" name="category" id="">
-                                    <option disabled selected>Choose</option>
-                                    <option value="Health Care">Health Care</option>
-                                    <option value="Education">Education</option>
-                                    <option value="Social Service">Social Service</option>
-                                    <option value="Animal Welfare">Animal Welfare</option>
-                                </select>
+                                <label className="text-md font-medium">Selected Category</label>
+                                <input id="" type="text" value={category} name="category" placeholder="category" className="w-full rounded-md p-2" />
                             </div>
                             <div className="col-span-full sm:col-span-3 flex flex-col">
-                                <label htmlFor="" className="text-md font-medium">Deadline</label>
-                                <DatePicker className="p-2 rounded-md" selected={startDate} onChange={(date) => setStartDate(date)} format='yyyy-MM-dd' />
+                                <label className="text-md font-medium">Deadline</label>
+                                <input id="" type="text" value={deadline} name="deadline" placeholder="deadline" className="w-full rounded-md p-2" />
                             </div>
                         </div>
                     </fieldset>
@@ -103,8 +106,18 @@ const AddVolunteer = () => {
                             </div>
                             <div className="col-span-full sm:col-span-3">
                                 <label htmlFor="website" className="text-md font-medium">Email</label>
-                                <input id="email" type="email" name="email"
+                                <input id="email" type="email" name="requestEmail"
                                     placeholder="Email" value={user?.email} className="w-full rounded-md p-2" />
+                            </div>
+                            <div className="col-span-full sm:col-span-3">
+                                <label htmlFor="website" className="text-md font-medium">Suggestion</label>
+                                <input id="" type="text" name="suggestion"
+                                    placeholder="Suggestion" className="w-full rounded-md p-2" />
+                            </div>
+                            <div className="col-span-full sm:col-span-3">
+                                <label htmlFor="website" className="text-md font-medium">Status</label>
+                                <input id="" type="text" name="status"
+                                    placeholder="Status" value="Requested" className="w-full rounded-md p-2" />
                             </div>
 
 
@@ -112,7 +125,7 @@ const AddVolunteer = () => {
 
                     </fieldset>
                     <div>
-                        <input className="btn  w-full" type="submit" value="Add Post" />
+                        <input className="btn bg-green-600 text-white w-full" type="submit" value="Request" />
                     </div>
                 </form>
             </section>
@@ -120,4 +133,4 @@ const AddVolunteer = () => {
     );
 };
 
-export default AddVolunteer;
+export default BeAVolunteer;

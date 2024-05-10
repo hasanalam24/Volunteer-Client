@@ -1,11 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const DetailsPage = () => {
     const details = useLoaderData()
     console.log(details)
 
-    const { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage } = details
+    const { _id, postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage } = details
 
     return (
         <div>
@@ -29,9 +29,13 @@ const DetailsPage = () => {
                             <div className="text-start">
                                 <h4>Owener: {username}</h4>
                                 <h4>Email: {email}</h4>
-                                <h4>Dea;ine: {deadline}</h4>
+                                <h4>Deadine: {deadline}</h4>
                             </div>
                         </div>
+                        <Link to={`/berequest/${_id}`}>
+                            <button className="btn btn-block mt-2 btn-secondary">Be A Volunteer</button>
+                        </Link>
+
                     </div>
                     <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                         <img src={thumbnail} alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />

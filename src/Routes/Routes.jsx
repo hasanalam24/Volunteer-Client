@@ -8,6 +8,7 @@ import Home from "../Pages/Home/Home";
 import AddVolunteer from "../Pages/AddVolunteer";
 import PrivateRoute from "./PrivateRoute";
 import DetailsPage from "../Pages/DetailsPage";
+import BeAVolunteer from "../Components/BeAVolunteer";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,13 @@ const router = createBrowserRouter([
             {
                 path: "addVolunteer",
                 element: <PrivateRoute><AddVolunteer></AddVolunteer></PrivateRoute>
+            },
+            {
+                path: "berequest/:id",
+                element: <PrivateRoute>
+                    <BeAVolunteer></BeAVolunteer>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
             },
         ]
     },

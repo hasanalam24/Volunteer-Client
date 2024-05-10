@@ -20,8 +20,9 @@ const AddVolunteer = () => {
         const deadline = startDate
         const username = form.username.value
         const email = form.email.value
+        const owenerImage = user.photoURL
 
-        const postInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email }
+        const postInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage }
 
         fetch('http://localhost:5000/addpost', {
             method: 'POST',

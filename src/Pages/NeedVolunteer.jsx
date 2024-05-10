@@ -22,7 +22,7 @@ const NeedVolunteer = () => {
                             <p>Need Peoples: {post.needPeoples}</p>
                         </div>
                         <div>
-                            <Link to={`${post._id}`}>
+                            <Link to={`/details/${post._id}`}>
                                 <button className="btn">View Details</button>
                             </Link>
                         </div>

@@ -1,12 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { AppContext } from "../Firebase/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 const MyRequestPage = () => {
 
     const { user } = useContext(AppContext)
     const [request, setRequest] = useState([])
+    const navigate = useNavigate()
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/request/${user.email}`)
@@ -15,6 +19,37 @@ const MyRequestPage = () => {
                 setRequest(data)
             })
     }, [user])
+
+
+    const handleCancel = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want delete this request post!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/request/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your request post has been deleted.",
+                                icon: "success"
+                            });
+                            navigate("/")
+                        }
+                    })
+            }
+        });
+    }
+
 
     return (
         <div>
@@ -46,7 +81,7 @@ const MyRequestPage = () => {
                                             <td>{req.category}</td>
                                             <td>{req.needPeoples}</td>
                                             <td className="flex gap-3 items-center">
-                                                <button>Cancel</button>
+                                                <button onClick={() => handleCancel(req._id)}>Cancel</button>
                                             </td>
                                         </tr>
                                         <br />

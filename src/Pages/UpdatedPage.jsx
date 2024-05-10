@@ -4,6 +4,7 @@ import { AppContext } from "../Firebase/AuthProvider";
 import { useContext, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const UpdatedPage = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -72,6 +73,9 @@ const UpdatedPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Human Plannet || Updated</title>
+            </Helmet>
             <section className="p-6 bg-gray-200 dark:bg-gray-200 dark:text-gray-900">
                 <form onSubmit={handleUpdated} noValidate="" action="" className="container flex flex-col mx-auto space-y-1">
                     <div className="pl-6">

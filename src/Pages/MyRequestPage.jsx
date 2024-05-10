@@ -3,7 +3,8 @@ import { FaSearch } from "react-icons/fa";
 import { AppContext } from "../Firebase/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
-
+import { GiCancel } from "react-icons/gi";
+import { Helmet } from "react-helmet-async";
 
 const MyRequestPage = () => {
 
@@ -53,6 +54,9 @@ const MyRequestPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Human Plannet || My Request</title>
+            </Helmet>
             {
                 request.length > 0 ?
                     <>
@@ -81,7 +85,7 @@ const MyRequestPage = () => {
                                             <td>{req.category}</td>
                                             <td>{req.needPeoples}</td>
                                             <td className="flex gap-3 items-center">
-                                                <button onClick={() => handleCancel(req._id)}>Cancel</button>
+                                                <button onClick={() => handleCancel(req._id)}> <GiCancel className="text-xl text-red-600"></GiCancel> </button>
                                             </td>
                                         </tr>
                                         <br />

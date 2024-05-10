@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../Firebase/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -47,6 +48,9 @@ const Login = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <title>Human Plannet || Login</title>
+            </Helmet>
             <div className="hero-content flex-col ">
                 <div className="text-center">
                     <h1 className="text-5xl font-bold">Login!</h1>

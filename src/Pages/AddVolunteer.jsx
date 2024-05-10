@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { AppContext } from "../Firebase/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddVolunteer = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -43,6 +44,9 @@ const AddVolunteer = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Human Plannet || Add Volunteer</title>
+            </Helmet>
             <section className="p-6 bg-gray-200 dark:bg-gray-200 dark:text-gray-900">
                 <form onSubmit={handleAddVolunteer} noValidate="" action="" className="container flex flex-col mx-auto space-y-1">
                     <div className="pl-6">

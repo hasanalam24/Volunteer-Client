@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const MangeMyPost = () => {
@@ -57,6 +58,9 @@ const MangeMyPost = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Human Plannet || Manage My Post</title>
+            </Helmet>
             {
                 posts.length > 0 ?
                     <>

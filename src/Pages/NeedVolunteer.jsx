@@ -1,4 +1,5 @@
 
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 
@@ -8,6 +9,9 @@ const NeedVolunteer = () => {
 
     return (
         <div className="space-y-8 w-[90%] mx-auto">
+            <Helmet>
+                <title>Human Plannet || Need Volunteer</title>
+            </Helmet>
             {
                 posts.map(post => <div key={post._id} className="relative shadow-lg flex flex-col  p-6 divide-y xl:flex-row items-center justify-center xl:divide-y-0 xl:divide-x dark:bg-gray-50 dark:text-gray-800 dark:divide-gray-300 w-full">
                     <div className="p-3 space-y-1 flex-1">

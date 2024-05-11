@@ -49,7 +49,7 @@ const Login = () => {
     }
 
     return (
-        <div className="flex flex-col lg:flex-row gap-10  w-[90%] mx-auto items-center justify-center mt-10 mb-10 ">
+        <div className="flex flex-col md:flex-row lg:flex-row gap-10  w-[90%] mx-auto items-center justify-center mt-10 mb-10 ">
             <Helmet>
                 <title>Human Plannet || Login</title>
             </Helmet>
@@ -60,7 +60,7 @@ const Login = () => {
 
             <div className="flex-1 ">
                 <div className="">
-                    <h1 className="text-5xl font-bold animate__animated animate__fadeInRight"><span className="text-secondary">Welcome Back</span> <br />Login!</h1>
+                    <h1 className="text-5xl md:text-4xl font-bold animate__animated animate__fadeInRight"><span className="text-secondary">Welcome Back</span> <br />Login!</h1>
 
                 </div>
                 <div className=" shrink-0 w-full max-w-sm shadow-2xl bg-base-100 rounded-xl">

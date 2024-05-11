@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import 'animate.css';
 
 const Register = () => {
 
@@ -35,8 +36,6 @@ const Register = () => {
             return
         }
 
-
-
         signUpUser(email, password)
             .then(result => {
                 if (result.user) {
@@ -57,55 +56,62 @@ const Register = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <Helmet>
-                <title>Human Plannet || Register</title>
-            </Helmet>
-            <div className="hero-content flex-col ">
-                <div className="text-center">
-                    <h1 className="text-5xl font-bold">Register!</h1>
-
-                </div>
-                <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleRegister} className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">PhotoURL</span>
-                            </label>
-                            <input type="text" name="photo" placeholder="PhotoURL" className="input input-bordered" required />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input name="password" type="password" placeholder="password" className="input input-bordered" required />
-
-                            <p className="text-red-500">{errorText}</p>
-                        </div>
-                        <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    <p>Already have an account? Please <Link to="/login" className="text-green-500 font-medium">Login</Link> here</p>
-                </div>
-
+        <div className="flex gap-10 flex-col md:flex-row lg:flex-row mt-10 mb-10">
+            <div className="flex-1 animate__animated animate__rotateInDownRight">
+                <img className="w-full h-[400px] lg:h-[600px]" src="https://i.ibb.co/s2mLLLm/2942004.jpg" alt="" />
             </div>
-            <ToastContainer />
+
+            <div className=" flex-1">
+                <Helmet>
+                    <title>Human Plannet || Register</title>
+                </Helmet>
+                <div className="hero-content flex-col ">
+                    <div className="text-center">
+                        <h1 className="text-5xl font-bold"><span className="text-orange-600 animate__animated  animate__fadeInLeft">Please </span>Register!</h1>
+
+                    </div>
+                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <form onSubmit={handleRegister} className="card-body">
+                            <div className="form-control animate__animated animate__zoomIn">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control animate__animated animate__zoomIn">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control animate__animated animate__zoomIn">
+                                <label className="label">
+                                    <span className="label-text">PhotoURL</span>
+                                </label>
+                                <input type="text" name="photo" placeholder="PhotoURL" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control animate__animated animate__zoomIn">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+
+                                <p className="text-red-500">{errorText}</p>
+                            </div>
+                            <div className="form-control mt-6 animate__animated animate__jackInTheBox">
+                                <button className="btn bg-green-600 text-white">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <p>Already have an account? Please <Link to="/login" className="text-green-500 font-medium">Login</Link> here</p>
+                    </div>
+
+                </div>
+                <ToastContainer />
+            </div>
         </div>
+
     );
 };
 

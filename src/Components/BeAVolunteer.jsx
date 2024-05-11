@@ -28,8 +28,9 @@ const BeAVolunteer = () => {
         const email = form.email.value
         const requestImage = user.photoURL
         const suggestion = form.suggestion.value
+        const status = form.status.value
 
-        const requestInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, requestImage, suggestion }
+        const requestInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, requestImage, suggestion, status }
 
 
         fetch('http://localhost:5000/request', {
@@ -55,7 +56,7 @@ const BeAVolunteer = () => {
     return (
         <div>
             <div>
-                <img className="relative h-[1100px] md:h-[710px] lg:h-[730px] w-full " src="https://i.ibb.co/FhFYpmR/colin-cassidy-d0e-AMp-UPXgo-unsplash.jpg" alt="" />
+                <img className="relative h-[1230px] md:h-[790px] lg:h-[790px] w-full " src="https://i.ibb.co/FhFYpmR/colin-cassidy-d0e-AMp-UPXgo-unsplash.jpg" alt="" />
             </div>
             <Helmet>
                 <title>Human Plannet || Request Volunteer</title>
@@ -98,17 +99,24 @@ const BeAVolunteer = () => {
                             <div className="col-span-full sm:col-span-3 animate__animated animate__bounceInLeft">
                                 <h1 className="text-md font-medium text-white">Select Category</h1>
                                 <select className="p-2 rounded-md" name="category" id="">
-                                    <option disabled selected>{category}</option>
-                                    <option value="Health Care">Health Care</option>
-                                    <option value="Education">Education</option>
-                                    <option value="Social Service">Social Service</option>
-                                    <option value="Animal Welfare">Animal Welfare</option>
+                                    <option selected value={category}>{category}</option>
+
                                 </select>
                             </div>
                             <div className="col-span-full sm:col-span-3 flex flex-col animate__animated animate__bounceInRight">
                                 <label htmlFor="" className="text-md font-medium text-white">Deadline</label>
                                 <DatePicker className="p-2 rounded-md" selected={deadline} onChange={(date) => setStartDate(date)}
                                     format='yyyy-MM-dd' />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 animate__animated animate__bounceInLeft">
+                                <label className="text-md font-medium text-white ">Suggestion</label>
+                                <input id="" type="text" name="suggestion"
+                                    placeholder="Suggestion" className="w-full rounded-md p-2" />
+                            </div>
+                            <div className="col-span-full sm:col-span-3 animate__animated animate__bounceInRight">
+                                <label className="text-md font-medium text-white">Status</label>
+                                <input id="" type="text" name="status"
+                                    value="Request" className="w-full rounded-md p-2" />
                             </div>
                         </div>
                     </fieldset>

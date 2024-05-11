@@ -5,7 +5,6 @@ import { Link, useLoaderData } from "react-router-dom";
 const DetailsPage = () => {
     const details = useLoaderData()
 
-
     const { _id, postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage } = details
 
     return (
@@ -14,7 +13,7 @@ const DetailsPage = () => {
                 <title>Human Plannet || Post Details</title>
             </Helmet>
             <section className="dark:bg-gray-100 dark:text-gray-800 mt-10 mb-10">
-                <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-5 lg:flex-row lg:gap-10">
+                <div className="container flex flex-col justify-center items-center p-6 mx-auto sm:py-12 lg:py-5 lg:flex-row lg:gap-10">
                     <div className="flex flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                         <h1 className="text-3xl font-bold leading-none sm:text-2xl">{postTile}
                         </h1>
@@ -42,7 +41,7 @@ const DetailsPage = () => {
 
                     </div>
                     <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-                        <img src={thumbnail} alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+                        <img src={thumbnail} alt="" className="object-contain h-72 sm:h-80 lg:h-96 md:h-[600px]  mt-8 xl:h-112 2xl:h-128" />
                     </div>
                 </div>
             </section>

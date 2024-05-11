@@ -29,21 +29,21 @@ const BannerSlider = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide className='relative'>
-                    <img className='h-[600px] w-full' src="https://i.ibb.co/7zWX59z/Cartoon-Drawing-2.jpg" alt="" />
+                <SwiperSlide className='relative '>
+                    <img className='h-[600px] w-full ' src="https://i.ibb.co/ScrFjy0/shelley-pauls-Tsz-4-K1s-S9w-unsplash.jpg" alt="" />
                     <SingleSlide text="Champion Change: Volunteer with Purpose!"></SingleSlide>
 
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='h-[600px] w-full' src="https://i.ibb.co/8DqsGcC/clay-banks-82-O37br-TLz-E-unsplash.jpg" alt="" />
+                    <img className='h-[600px] w-full' src="https://i.ibb.co/vqqgXW7/ray-sangga-kusuma-7u-Sr-Oy-Y1-U0-I-unsplash.jpg" alt="" />
                     <SingleSlide text="Community Catalysts: Activate Change Now!"></SingleSlide>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='h-[600px] w-full' src="https://i.ibb.co/12qw1VJ/alexandra-gorn-JIUjvqe2-ZHg-unsplash.jpg" alt="" />
+                    <img className='h-[600px] w-full' src="https://i.ibb.co/wpDNLSC/joel-muniz-A4-Ax1-Apccf-A-unsplash.jpg" alt="" />
                     <SingleSlide text="Hands-On Heroes: Make a Difference"></SingleSlide>
                 </SwiperSlide>
                 <SwiperSlide>
-                    <img className='h-[600px] w-full' src="https://i.ibb.co/hm5x5qX/chastity-cortijo-98-WE9h-WWji-Q-unsplash.jpg" alt="" />
+                    <img className='h-[600px] w-full' src="https://i.ibb.co/hy19MkL/daniel-funes-fuentes-Ty-Lw3-IQALMs-unsplash.jpg" alt="" />
                     <SingleSlide text="Creating Change Together: Volunteer Today!"></SingleSlide>
                 </SwiperSlide>
 

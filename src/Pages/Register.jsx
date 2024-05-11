@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import { AppContext } from "../Firebase/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
 
@@ -37,7 +39,9 @@ const Register = () => {
 
         signUpUser(email, password)
             .then(result => {
-                console.log('register user', result.user)
+                if (result.user) {
+                    toast("Registration Successfully!")
+                }
 
                 updateUser(name, photo)
                     .then(() => {
@@ -100,6 +104,7 @@ const Register = () => {
                 </div>
 
             </div>
+            <ToastContainer />
         </div>
     );
 };

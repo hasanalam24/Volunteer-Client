@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AppContext } from "../Firebase/AuthProvider";
 import { Helmet } from "react-helmet-async";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
 
     const { signInUser, googleLogin } = useContext(AppContext)
+
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -17,18 +19,18 @@ const Login = () => {
         const email = form.email.value
         const password = form.password.value
 
-        // const userInfo = { email, password }
-        // console.log(userInfo)
+
         signInUser(email, password)
             .then(result => {
                 if (result.user) {
 
-                    alert("Login Succesfully");
-                    navigate(location?.state || "/")
+                    toast("Login Successfully!")
+
                 }
+                navigate(location?.state || "/")
             })
-            .catch(error => {
-                console.log(error.message)
+            .catch(() => {
+                toast.error("Invalid Email/Password!")
             })
     }
 
@@ -36,7 +38,7 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 if (result.user) {
-                    alert("google Login done");
+                    toast("Login Successfully!")
                     navigate(location?.state || "/")
                 }
             })
@@ -63,12 +65,14 @@ const Login = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
                             <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -84,7 +88,7 @@ const Login = () => {
                 </div>
 
             </div>
-
+            <ToastContainer />
         </div>
     );
 };

@@ -15,6 +15,10 @@ const NeedSection = ({ posts }) => {
                             <div className="mt-4 ">
                                 <h2 className="card-title mb-3">{post.postTile}</h2>
                                 <p>{post.description.slice(0, 150)}...</p>
+                                <div>
+                                    <p className="font-medium">Category: <span>{post.category}</span></p>
+                                    <p className="font-medium">Deadline: {post.deadline}</p>
+                                </div>
                                 <div className="flex items-center justify-start mt-4">
                                     <Link to={`/details/${post._id}`} className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
                                         <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-red-600 group-hover:h-full"></span>
@@ -32,6 +36,11 @@ const NeedSection = ({ posts }) => {
                     }
                 </div>
             }
+            <div className="text-center mb-8">
+                <Link to="/needVolunteer">
+                    <button className="btn btn-outline btn-secondary">See All Posts</button>
+                </Link>
+            </div>
         </div>
     );
 };

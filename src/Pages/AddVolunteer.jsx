@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AppContext } from "../Firebase/AuthProvider";
 import { Helmet } from "react-helmet-async";
 import 'animate.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddVolunteer = () => {
     const [startDate, setStartDate] = useState(new Date());
@@ -36,7 +38,7 @@ const AddVolunteer = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('added done')
+                    toast("Post Added Successfully!")
                 }
             })
 
@@ -124,6 +126,7 @@ const AddVolunteer = () => {
                     </div>
                 </form>
             </section>
+            <ToastContainer />
         </div >
     );
 };

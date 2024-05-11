@@ -97,11 +97,12 @@ const MyRequestPage = () => {
 
                     </>
                     :
-                    <div>
-                        <div className="flex gap-5 items-center justify-center mt-8 mb-8">
+                    <div className="text-center">
+                        <span className="loading loading-infinity loading-lg  mt-20"></span>
+                        {/* <div className="flex gap-5 items-center justify-center mt-8 mb-8">
                             <FaSearch className="text-4xl"></FaSearch>
                             <h4 className="text-3xl">No Data Founds!!!</h4>
-                        </div>
+                        </div> */}
                     </div>
             }
         </div>

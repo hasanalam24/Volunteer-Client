@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../Firebase/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BeAVolunteer = () => {
-
+    const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AppContext)
     const details = useLoaderData()
 
@@ -23,7 +24,7 @@ const BeAVolunteer = () => {
         const needPeoples = form.needPeoples.value
         const location = form.location.value
         const category = form.category.value
-        const deadline = form.deadline.value
+        const deadline = startDate
         const username = form.username.value
         const email = form.email.value
         const requestImage = user.photoURL
@@ -43,7 +44,7 @@ const BeAVolunteer = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('request done')
+                    toast("Request Send Successfully!")
 
                 }
             })
@@ -147,6 +148,7 @@ const BeAVolunteer = () => {
                     </div>
                 </form>
             </section>
+            <ToastContainer />
         </div >
     );
 };

@@ -47,7 +47,7 @@ const AddVolunteer = () => {
             <Helmet>
                 <title>Human Plannet || Add Volunteer</title>
             </Helmet>
-            <section className="p-6 bg-gray-200 dark:bg-gray-200 dark:text-gray-900">
+            <section className="p-6 bg-gray-200 dark:bg-gray-200 dark:text-gray-900 mt-12 mb-8">
                 <form onSubmit={handleAddVolunteer} noValidate="" action="" className="container flex flex-col mx-auto space-y-1">
                     <div className="pl-6">
                         <p className="font-medium">Add Volunteer Post Information</p>

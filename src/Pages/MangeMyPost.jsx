@@ -57,7 +57,7 @@ const MangeMyPost = () => {
     }
 
     return (
-        <div>
+        <div className="mt-12 mb-8">
             <Helmet>
                 <title>Human Plannet || Manage My Post</title>
             </Helmet>

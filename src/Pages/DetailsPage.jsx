@@ -13,7 +13,7 @@ const DetailsPage = () => {
             <Helmet>
                 <title>Human Plannet || Post Details</title>
             </Helmet>
-            <section className="dark:bg-gray-100 dark:text-gray-800">
+            <section className="dark:bg-gray-100 dark:text-gray-800 mt-10 mb-10">
                 <div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-5 lg:flex-row lg:gap-10">
                     <div className="flex flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
                         <h1 className="text-3xl font-bold leading-none sm:text-2xl">{postTile}

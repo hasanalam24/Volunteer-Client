@@ -1,7 +1,7 @@
 
 import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
-
+import 'animate.css';
 
 const NeedVolunteer = () => {
 
@@ -13,8 +13,8 @@ const NeedVolunteer = () => {
                 <title>Human Plannet || Need Volunteer</title>
             </Helmet>
             {
-                posts.map(post => <div key={post._id} className="relative shadow-lg flex flex-col  p-6 divide-y xl:flex-row items-center justify-center xl:divide-y-0 xl:divide-x dark:bg-gray-50 dark:text-gray-800 dark:divide-gray-300 w-full">
-                    <div className="p-3 space-y-3 flex-1 md:p-8 md:w-3/4">
+                posts.map(post => <div key={post._id} className="relative shadow-lg flex flex-col  p-6 divide-y xl:flex-row items-center justify-center xl:divide-y-0 xl:divide-x dark:bg-gray-50 dark:text-gray-800 dark:divide-gray-300 w-full animate__animated animate__fadeInUp ">
+                    <div className="p-3 space-y-3 flex-1 md:p-8 md:w-3/4 animate__animated animate__bounceInRight">
                         <h3 className="text-3xl font-semibold">{post.postTile}</h3>
                         <p className="text-sm dark:text-gray-600">{
                             post.description.slice(0, 70)

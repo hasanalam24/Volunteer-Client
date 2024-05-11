@@ -8,13 +8,13 @@ const NeedVolunteer = () => {
     const posts = useLoaderData()
 
     return (
-        <div className="space-y-8 w-[90%] mx-auto mt-10 mb-8">
+        <div className="space-y-8 w-[95%] mx-auto mt-10 mb-8">
             <Helmet>
                 <title>Human Plannet || Need Volunteer</title>
             </Helmet>
             {
                 posts.map(post => <div key={post._id} className="relative shadow-lg flex flex-col  p-6 divide-y xl:flex-row items-center justify-center xl:divide-y-0 xl:divide-x dark:bg-gray-50 dark:text-gray-800 dark:divide-gray-300 w-full">
-                    <div className="p-3 space-y-3 flex-1">
+                    <div className="p-3 space-y-3 flex-1 md:p-8 md:w-3/4">
                         <h3 className="text-3xl font-semibold">{post.postTile}</h3>
                         <p className="text-sm dark:text-gray-600">{
                             post.description.slice(0, 70)
@@ -36,8 +36,8 @@ const NeedVolunteer = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3">
-                        <img className="h-[200px] w-[260px]" src={post.thumbnail} alt="" />
+                    <div className="flex items-center gap-3">
+                        <img className="h-[200px] w-[350px] md:w-[650px] md:h-[320px]" src={post.thumbnail} alt="" />
                     </div>
                 </div>)
             }

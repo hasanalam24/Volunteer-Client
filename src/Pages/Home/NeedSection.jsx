@@ -11,7 +11,7 @@ const NeedSection = ({ posts }) => {
                         posts.slice(0, 6).map(post => <div key={post._id} className="rounded-lg bg-base-100 shadow-xl border-b-4 border-b-red-600 p-4">
                             <figure><img className="h-[270px] rounded-xl" src={post.thumbnail} alt="" /></figure>
                             <div className="mt-4 ">
-                                <h2 className="card-title mb-3">{post.postTile}</h2>
+                                <h2 className="card-title mb-3">{post.postTitle}</h2>
                                 <p>{post.description.slice(0, 150)}...</p>
                                 <div>
                                     <p className="font-medium">Category: <span>{post.category}</span></p>

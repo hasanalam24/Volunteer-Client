@@ -14,7 +14,7 @@ const MyRequestPage = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/request/${user.email}`)
+        fetch(`https://human-plannet-server.vercel.app/request/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setRequest(data)
@@ -33,7 +33,7 @@ const MyRequestPage = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/request/${id}`, {
+                fetch(`https://human-plannet-server.vercel.app/request/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -80,7 +80,7 @@ const MyRequestPage = () => {
                                                 <img className="w-[30px] h-[30px]" src={req.thumbnail} alt="" />
                                             </th>
                                             <td>{
-                                                req.postTile.slice(0, 20)
+                                                req.postTitle.slice(0, 20)
                                             }....</td>
                                             <td>{req.category}</td>
                                             <td>{req.needPeoples}</td>

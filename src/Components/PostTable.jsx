@@ -1,7 +1,7 @@
 
 
 const PostTable = ({ post }) => {
-    const { postTile, thumbnail, needPeoples, location, category, deadline } = post
+    const { postTitle, thumbnail, needPeoples, location, category, deadline } = post
     return (
         <div>
             {/* row 1 */}

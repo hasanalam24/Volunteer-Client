@@ -34,14 +34,14 @@ const router = createBrowserRouter([
             {
                 path: "needVolunteer",
                 element: <NeedVolunteer></NeedVolunteer>,
-                loader: () => fetch('http://localhost:5000/addpost')
+                loader: () => fetch('https://human-plannet-server.vercel.app/addpost')
             },
             {
                 path: "details/:id",
                 element: <PrivateRoute>
                     <DetailsPage></DetailsPage>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
+                loader: ({ params }) => fetch(`https://human-plannet-server.vercel.app/addpost/${params.id}`)
             },
             {
                 path: "addVolunteer",
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <BeAVolunteer></BeAVolunteer>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
+                loader: ({ params }) => fetch(`https://human-plannet-server.vercel.app/addpost/${params.id}`)
             },
             {
                 path: "addposts/:email",
@@ -65,7 +65,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <UpdatedPage></UpdatedPage>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
+                loader: ({ params }) => fetch(`https://human-plannet-server.vercel.app/addpost/${params.id}`)
             },
             {
                 path: "myrequest/:email",

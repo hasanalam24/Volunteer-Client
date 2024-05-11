@@ -20,7 +20,7 @@ const SingleSlide = ({ text }) => {
                     />
                 </span>
             </h1> */}
-            <p className='text-2xl font-bold text-white'>{text}</p>
+            <p className='text-4xl font-bold text-white'>{text}</p>
 
         </div >
     );

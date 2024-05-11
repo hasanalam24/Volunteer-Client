@@ -9,7 +9,7 @@ const Home = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/addpost')
+        fetch('https://human-plannet-server.vercel.app/addpost')
             .then(res => res.json())
             .then(data => {
                 setPosts(data)

@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../Firebase/AuthProvider";
 import { MdAutoDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
@@ -14,14 +13,16 @@ const MangeMyPost = () => {
     const { user } = useContext(AppContext)
     const navigate = useNavigate()
 
+
     useEffect(() => {
-        fetch(`http://localhost:5000/addposts/${user.email}`, { credentials: 'include' })
+        fetch(`https://human-plannet-server.vercel.app/mypost/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setposts(data)
-
             })
     }, [user])
+
+    console.log(posts)
 
     const handleDelete = id => {
         Swal.fire({
@@ -35,7 +36,7 @@ const MangeMyPost = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/delete/${id}`, {
+                fetch(`https://human-plannet-server.vercel.app/delete/${id}`, {
                     method: "DELETE",
 
                 })
@@ -82,7 +83,7 @@ const MangeMyPost = () => {
                                                 <img className="w-[30px] h-[30px]" src={post.thumbnail} alt="" />
                                             </th>
                                             <td>{
-                                                post.postTile.slice(0, 20)
+                                                post.postTitle.slice(0, 20)
                                             }....</td>
                                             <td>{post.category}</td>
                                             <td>{post.needPeoples}</td>
@@ -102,10 +103,7 @@ const MangeMyPost = () => {
                     :
                     <div className="text-center">
                         <span className="loading loading-infinity loading-lg  mt-20"></span>
-                        {/* <div className="flex gap-5 items-center justify-center mt-8 mb-8">
-                            <FaSearch className="text-4xl"></FaSearch>
-                            <h4 className="text-3xl">No Data Founds!!!</h4>
-                        </div> */}
+
                     </div>
             }
         </div>

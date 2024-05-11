@@ -16,7 +16,7 @@ const UpdatedPage = () => {
     const handleUpdated = e => {
         e.preventDefault()
         const form = e.target
-        const postTile = form.postTile.value
+        const postTitle = form.postTitle.value
         const thumbnail = form.thumbnail.value
         const description = form.description.value
         const needPeoples = form.needPeoples.value
@@ -27,7 +27,7 @@ const UpdatedPage = () => {
         const email = form.email.value
         const owenerImage = user.photoURL
 
-        const updatedInfo = { postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage }
+        const updatedInfo = { postTitle, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage }
 
 
 
@@ -41,7 +41,7 @@ const UpdatedPage = () => {
             confirmButtonText: "Yes, Update it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/updated/${datas._id}`, {
+                fetch(`https://human-plannet-server.vercel.app/updated/${datas._id}`, {
                     method: "PUT",
                     headers: {
                         'content-type': 'application/json'
@@ -91,8 +91,8 @@ const UpdatedPage = () => {
                         <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
                             <div className="col-span-full sm:col-span-3 animate__animated animate__bounceInLeft">
                                 <label className="text-md font-medium text-white ">Post Title</label>
-                                <input id="postTitle" type="text" name="postTile"
-                                    defaultValue={datas.postTile} placeholder="Post Title" className="w-full rounded-md p-2" />
+                                <input id="postTitle" type="text" name="postTitle"
+                                    defaultValue={datas.postTitle} placeholder="Post Title" className="w-full rounded-md p-2" />
                             </div>
                             <div className="col-span-full sm:col-span-3 animate__animated animate__bounceInRight">
                                 <label className="text-md font-medium text-white">Thumbnail</label>

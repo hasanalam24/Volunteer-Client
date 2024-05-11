@@ -7,15 +7,35 @@ const NeedVolunteer = () => {
 
     const posts = useLoaderData()
 
+    // const handleSearch = e => {
+    //     e.preventDefault()
+    //     const form = e.target
+    //     const search = form.searchPosts.value
+    //     console.log(search)
+    //     fetch(`https://human-plannet-server.vercel.app/searchpost/${search}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data)
+    //         })
+    // }
+
     return (
         <div className="space-y-8 w-[95%] mx-auto mt-10 mb-8">
             <Helmet>
                 <title>Human Plannet || Need Volunteer</title>
             </Helmet>
+
+            <div className="p-4 text-center">
+                <form action="">
+                    <input className="bg-gray-100 p-2 " type="text" name="searchPosts" placeholder="Search By Post Name" />
+                    <input className="bg-secondary text-white p-2" type="submit" value="Search" />
+                </form>
+            </div>
+
             {
                 posts.map(post => <div key={post._id} className="relative shadow-lg flex flex-col  p-6 divide-y xl:flex-row items-center justify-center xl:divide-y-0 xl:divide-x dark:bg-gray-50 dark:text-gray-800 dark:divide-gray-300 w-full animate__animated animate__fadeInUp ">
                     <div className="p-3 space-y-3 flex-1 md:p-8 md:w-3/4 animate__animated animate__bounceInRight">
-                        <h3 className="text-3xl font-semibold">{post.postTile}</h3>
+                        <h3 className="text-3xl font-semibold">{post.postTitle}</h3>
                         <p className="text-sm dark:text-gray-600">{
                             post.description.slice(0, 70)
                         }.......</p>

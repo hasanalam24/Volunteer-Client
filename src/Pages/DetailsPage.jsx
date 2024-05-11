@@ -5,7 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const DetailsPage = () => {
     const details = useLoaderData()
 
-    const { _id, postTile, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage } = details
+    const { _id, postTitle, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage } = details
 
     return (
         <div>
@@ -15,7 +15,7 @@ const DetailsPage = () => {
             <section className="dark:bg-gray-100 dark:text-gray-800 mt-10 mb-10">
                 <div className="container flex flex-col justify-center items-center p-6 mx-auto sm:py-12 lg:py-5 lg:flex-row lg:gap-10">
                     <div className="flex flex-col justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
-                        <h1 className="text-3xl font-bold leading-none sm:text-2xl">{postTile}
+                        <h1 className="text-3xl font-bold leading-none sm:text-2xl">{postTitle}
                         </h1>
                         <p className=" text-lg mt-5 mb-3">Description: {description}
                         </p>

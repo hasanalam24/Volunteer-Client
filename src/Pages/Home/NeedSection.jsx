@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 const NeedSection = ({ posts }) => {
 
-    console.log(posts)
-
     return (
         <div>
             {posts.length < 1 ? <div className="mt-8 text-center mb-8"> <span className="loading loading-spinner text-primary"></span></div> :

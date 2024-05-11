@@ -15,7 +15,7 @@ const MangeMyPost = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addposts/${user.email}`)
+        fetch(`http://localhost:5000/addposts/${user.email}`, { credentials: 'include' })
             .then(res => res.json())
             .then(data => {
                 setposts(data)
@@ -50,8 +50,6 @@ const MangeMyPost = () => {
                             navigate("/")
                         }
                     })
-
-
             }
         });
     }

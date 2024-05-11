@@ -7,9 +7,9 @@ const Footer = () => {
         <div>
             <footer className="footer p-10 bg-base-200 text-base-content">
                 <aside>
-                    {/* <img className="w-[120px] h-[120px]" src="https://i.ibb.co/KNyrbGC/Human-Logo.png" alt="" /> */}
-                    <h1 className="text-2xl font-semibold">Human Plannet</h1>
-                    <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                    <img className="w-[110px] h-[80px]" src="https://i.ibb.co/KNyrbGC/Human-Logo.png" alt="" />
+
+                    <p className="ml-5 -mt-6">Human Plannet.<br />Providing reliable tech since 2024</p>
                 </aside>
                 <nav>
                     <h6 className="footer-title">Services</h6>
@@ -46,6 +46,11 @@ const Footer = () => {
 
 
                 </nav>
+            </footer>
+            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+                <aside>
+                    <p>Copyright © 2024 - All right reserved by Human Plannet Org.</p>
+                </aside>
             </footer>
         </div>
     );

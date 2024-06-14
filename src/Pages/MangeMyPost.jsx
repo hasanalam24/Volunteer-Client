@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 // import { useLoaderData } from "react-router-dom";
+import { FaSearch } from "react-icons/fa";
 import { AppContext } from "../Firebase/AuthProvider";
 import { MdAutoDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
@@ -14,15 +15,20 @@ const MangeMyPost = () => {
     const navigate = useNavigate()
 
 
+
+
+
     useEffect(() => {
-        fetch(`https://human-plannet-server.vercel.app/mypost/${user.email}`)
+        fetch(`http://localhost:5000/mypost/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setposts(data)
+
             })
     }, [user])
 
     console.log(posts)
+
 
     const handleDelete = id => {
         Swal.fire({
@@ -36,7 +42,7 @@ const MangeMyPost = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`https://human-plannet-server.vercel.app/delete/${id}`, {
+                fetch(`http://localhost:5000/delete/${id}`, {
                     method: "DELETE",
 
                 })
@@ -54,6 +60,7 @@ const MangeMyPost = () => {
             }
         });
     }
+
 
     return (
         <div className="mt-12 mb-8">
@@ -101,9 +108,13 @@ const MangeMyPost = () => {
 
                     </>
                     :
-                    <div className="text-center">
-                        <span className="loading loading-infinity loading-lg  mt-20"></span>
+                    // <div className="text-center">
+                    //     <span className="loading loading-infinity loading-lg  mt-20"></span>
 
+                    // </div>
+                    <div className="flex gap-5 items-center justify-center mt-8 mb-8">
+                        <FaSearch className="text-4xl"></FaSearch>
+                        <h4 className="text-3xl">No Data Founds!!!</h4>
                     </div>
             }
         </div>

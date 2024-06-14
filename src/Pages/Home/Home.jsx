@@ -4,17 +4,26 @@ import NeedSection from "./NeedSection";
 import OurCommunities from "./OurCommunities";
 import { useEffect, useState } from "react";
 
+//https://human-plannet-server.vercel.app
 
 const Home = () => {
     const [posts, setPosts] = useState([])
+    const [newDate, setNewDate] = useState(true)
 
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/addpost?sort=${newDate ? 'asc' : 'des'}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setPosts(data)
+    //         })
+    // }, [newDate])
     useEffect(() => {
-        fetch('https://human-plannet-server.vercel.app/addpost')
+        fetch(`http://localhost:5000/addpost?sort=${newDate ? 'asc' : 'des'}`)
             .then(res => res.json())
             .then(data => {
                 setPosts(data)
             })
-    }, [])
+    }, [newDate])
 
     return (
         <div>
@@ -30,6 +39,11 @@ const Home = () => {
                     <h1 className="text-2xl lg:text-4xl font-bold text-center ">We Need Volunteers</h1>
 
                 </div>
+                <button
+                    onClick={() => setNewDate(!newDate)}
+                    className="btn btn-secondary">{
+                        newDate ? "Sort by New Date" : "Sort by Old Date"
+                    }</button>
                 <NeedSection posts={posts}></NeedSection>
             </div>
             <div>

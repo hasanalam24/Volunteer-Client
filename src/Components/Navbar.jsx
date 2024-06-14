@@ -18,6 +18,7 @@ const Navbar = () => {
         <NavLink to="/"><li>Home</li></NavLink>
         <NavLink to="/needVolunteer"><li>Need Volunteer</li></NavLink>
         <NavLink to="/register"><li>Register</li></NavLink>
+        <NavLink to="/payments"><li>Payments</li></NavLink>
     </>
 
     const handleLogOut = () => {

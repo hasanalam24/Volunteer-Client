@@ -34,7 +34,7 @@ const BeAVolunteer = () => {
         const requestInfo = { postTitle, thumbnail, description, needPeoples, location, category, deadline, username, email, requestImage, suggestion, status }
 
 
-        fetch('https://human-plannet-server.vercel.app/request', {
+        fetch('http://localhost:5000/request', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

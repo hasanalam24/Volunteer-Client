@@ -41,7 +41,7 @@ const UpdatedPage = () => {
             confirmButtonText: "Yes, Update it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://human-plannet-server.vercel.app/updated/${datas._id}`, {
+                fetch(`http://localhost:5000/updated/${datas._id}`, {
                     method: "PUT",
                     headers: {
                         'content-type': 'application/json'

@@ -28,7 +28,7 @@ const AddVolunteer = () => {
 
         const postInfo = { postTitle, thumbnail, description, needPeoples, location, category, deadline, username, email, owenerImage }
 
-        fetch('https://human-plannet-server.vercel.app/addpost', {
+        fetch('http://localhost:5000/addpost', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

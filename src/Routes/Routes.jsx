@@ -12,6 +12,7 @@ import BeAVolunteer from "../Components/BeAVolunteer";
 import MangeMyPost from "../Pages/MangeMyPost";
 import UpdatedPage from "../Pages/UpdatedPage";
 import MyRequestPage from "../Pages/MyRequestPage";
+import Payments from "../Components/Payments";
 
 const router = createBrowserRouter([
     {
@@ -32,16 +33,20 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
+                path: "payments",
+                element: <Payments></Payments>
+            },
+            {
                 path: "needVolunteer",
                 element: <NeedVolunteer></NeedVolunteer>,
-                loader: () => fetch('https://human-plannet-server.vercel.app/addpost')
+                loader: () => fetch('http://localhost:5000/addpost')
             },
             {
                 path: "details/:id",
                 element: <PrivateRoute>
                     <DetailsPage></DetailsPage>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`https://human-plannet-server.vercel.app/addpost/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
             },
             {
                 path: "addVolunteer",
@@ -52,7 +57,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <BeAVolunteer></BeAVolunteer>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`https://human-plannet-server.vercel.app/addpost/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
             },
             {
                 path: "addposts/:email",
@@ -65,7 +70,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <UpdatedPage></UpdatedPage>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`https://human-plannet-server.vercel.app/addpost/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/addpost/${params.id}`)
             },
             {
                 path: "myrequest/:email",

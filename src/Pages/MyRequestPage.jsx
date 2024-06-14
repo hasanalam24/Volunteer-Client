@@ -14,7 +14,7 @@ const MyRequestPage = () => {
 
 
     useEffect(() => {
-        fetch(`https://human-plannet-server.vercel.app/request/${user.email}`)
+        fetch(`http://localhost:5000/request/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setRequest(data)
@@ -33,7 +33,7 @@ const MyRequestPage = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://human-plannet-server.vercel.app/request/${id}`, {
+                fetch(`http://localhost:5000/request/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -97,13 +97,12 @@ const MyRequestPage = () => {
 
                     </>
                     :
-                    <div className="text-center">
-                        <span className="loading loading-infinity loading-lg  mt-20"></span>
-                        {/* <div className="flex gap-5 items-center justify-center mt-8 mb-8">
-                            <FaSearch className="text-4xl"></FaSearch>
-                            <h4 className="text-3xl">No Data Founds!!!</h4>
-                        </div> */}
+
+                    <div className="flex gap-5 items-center justify-center mt-8 mb-8">
+                        <FaSearch className="text-4xl"></FaSearch>
+                        <h4 className="text-3xl">No Data Founds!!!</h4>
                     </div>
+
             }
         </div>
     );
